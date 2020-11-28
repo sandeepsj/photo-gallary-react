@@ -5,10 +5,6 @@ class TopNav extends Component {
   render() {
     return (
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">
-          Hide
-        </button>
-
         <button
           class="navbar-toggler"
           type="button"
@@ -40,8 +36,6 @@ class TopNav extends Component {
                 Log out
               </a>
             </li>
-
-            
           </ul>
         </div>
       </nav>

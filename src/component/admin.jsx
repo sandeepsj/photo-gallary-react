@@ -10,12 +10,9 @@ class Login extends Component {
       <div className="col-md-9 col-lg-8 mx-auto">
         <h3 className="login-heading mb-4">Login as an Admin</h3>
         <form
-          action="/home"
+          action="/adminHome"
           onSubmit={() =>
-            this.props.login(
-              this.Refs.email.current.value,
-              this.Refs.password.current.value
-            )
+            this.props.adminLogin(this.Refs.password.current.value)
           }
         >
           <div className="form-label-group">
@@ -27,6 +24,8 @@ class Login extends Component {
               required
               autoFocus
               ref={this.Refs.email}
+              value="Admin"
+              disabled
             />
           </div>
 

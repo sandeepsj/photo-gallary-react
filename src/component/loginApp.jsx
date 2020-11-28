@@ -27,6 +27,9 @@ class LoginApp extends Component {
       })
       .catch((error) => console.log(error));
   };
+  adminLogin = (password) => {
+    axios.post("/adminLoginAuth", { password: password });
+  };
   setScreen = (screen) => {
     this.setState({ ...this.state, selectedOption: screen });
   };

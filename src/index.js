@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Home from "./Home";
+import AdminHome from "./adminHome";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -12,6 +13,10 @@ ReactDOM.render(
       <Switch>
         <Route path="/home">
           <Home />
+        </Route>
+
+        <Route path="/adminHome">
+          <AdminHome />
         </Route>
 
         <Route path="/">
