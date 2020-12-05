@@ -1,85 +1,11 @@
 import React, { Component } from "react";
 import Chart from "react-google-charts";
-class UserActivityModal extends Component {
+class UserStatistics extends Component {
   state = {};
-  Refs = {
-    allowedValueRange: React.createRef(),
-  };
   render() {
-    if (this.props.userDetails === undefined) {
-      return <div></div>;
-    }
     return (
       <div>
         <div className="col-lg-12 col-md-12 col-12">
-          <h1>User Activity of {this.props.userDetails.userid}</h1>
-          <div className="row">
-            <div className="col-lg-6  col-12">
-              <Chart
-                width={"450px"}
-                height={"300px"}
-                chartType="PieChart"
-                loader={<div>Loading Chart</div>}
-                data={[
-                  ["Task", "Disk Usage"],
-
-                  [
-                    "Free",
-                    this.props.userDetails["Allowed Space"] -
-                      this.props.userDetails["Used Space"],
-                  ],
-                  ["Used", this.props.userDetails["Used Space"]],
-                ]}
-                options={{
-                  title: "Disk Usage",
-                }}
-              />
-            </div>
-            <div className="col-lg-6  col-12">
-              <div class="form-group m-5">
-                <label>Allowed Space for {this.props.userDetails.userid}</label>
-                <hr />
-                <label style={{ float: "left" }}>10MB</label>
-                <label style={{ float: "right" }}>1GB</label>
-                <input
-                  type="range"
-                  class="form-control-range"
-                  id="formControlRange"
-                  min={10}
-                  max={1024}
-                  defaultValue={this.props.userDetails["Allowed Space"]}
-                  onChange={() =>
-                    this.props.updateAllowedSpace(
-                      this.Refs.allowedValueRange.current.value,
-                      this.props.userDetails.userid
-                    )
-                  }
-                  ref={this.Refs.allowedValueRange}
-                />
-                <div class="input-group mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    value={this.props.userDetails["Allowed Space"] + " MB"}
-                  />
-                  <div class="input-group-append">
-                    <label
-                      class="input-group-text"
-                      style={{ cursor: "pointer" }}
-                      onClick={() =>
-                        this.props.submitAllowedSpace(
-                          this.props.userDetails.userid
-                        )
-                      }
-                    >
-                      Submit
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr />
           <div className="row">
             <div className=" col-lg-6 col-12">
               <Chart
@@ -176,4 +102,4 @@ class UserActivityModal extends Component {
   }
 }
 
-export default UserActivityModal;
+export default UserStatistics;

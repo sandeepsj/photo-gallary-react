@@ -4,12 +4,6 @@ import folderIcon from "../../assets/images/folderIcon.jpg";
 //import folderIcon from "../../images/assets/folderIcon";
 axios.defaults.withCredentials = true;
 
-function buildFileSelector() {
-  const fileSelector = document.createElement("input");
-  fileSelector.setAttribute("type", "file");
-  return fileSelector;
-}
-
 class Gallary extends Component {
   state = {
     images: [],
@@ -41,10 +35,11 @@ class Gallary extends Component {
       })
       .catch((err) => console.log(err));
   };
-  fileSelector = buildFileSelector();
+  fileSelector = undefined;
   componentDidMount() {
     this.getImages();
   }
+
   gotoPath = (folder) => {
     this.setState(
       {
@@ -83,7 +78,50 @@ class Gallary extends Component {
       });
   };
 
+  handleUpload = (file) => {
+    this.readImage(file, (img, imgName) => {
+      axios
+        .post("/uploadImage", {
+          image: img,
+          fname: imgName.split(".")[0],
+          dir: this.state.curPath,
+        })
+        .then((res) => {
+          this.getImages();
+          console.log("File Uploaded Successfully");
+        });
+    });
+    // axios
+    //   .post("/uploadImage", { data: file, fileName: file.name })
+    //   .then((res) => {
+    //     this.getImages();
+    //     console.log("File Uploaded Successfully");
+    //   });
+  };
+
+  readImage = (file, callBack) => {
+    // Check if the file is an image.
+    if (file.type && file.type.indexOf("image") === -1) {
+      alert("File is not an image.", file.type, file);
+      return;
+    }
+    const reader = new FileReader();
+    reader.addEventListener(
+      "load",
+      function () {
+        // convert image file to base64 string
+        callBack(reader.result, file.name);
+      },
+      false
+    );
+    reader.readAsDataURL(file);
+  };
+
   render() {
+    this.fileSelector = document.createElement("input");
+    this.fileSelector.type = "file";
+    this.fileSelector.onchange = (event) =>
+      this.handleUpload(event.target.files[0]);
     return (
       <div class="container">
         <p>
@@ -104,7 +142,9 @@ class Gallary extends Component {
             type="button"
             class="btn btn-warning"
             style={{ float: "right" }}
-            onClick={() => this.fileSelector.click()}
+            onClick={() => {
+              this.fileSelector.click();
+            }}
           >
             Upload here
           </button>

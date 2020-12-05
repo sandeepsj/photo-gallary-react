@@ -1,31 +1,31 @@
+import axios from "axios";
 import React, { Component } from "react";
+import Banner from "./banner";
+import UserStatistics from "./userStatistics";
 class DashBoard extends Component {
-  state = {};
+  state = { myPhotosCount: 0, myDiskUsage: 0, allowedSpace: 0 };
+
+  getMyStatus = () => {
+    axios.get("/getMyStatus").then((res) => {
+      console.log(res);
+      this.setState({
+        ...this.state,
+        myDiskUsage: parseInt(res.data.used / (1024 * 1024)),
+        allowedSpace: res.data.allowed,
+        myPhotosCount: res.data.photosCount,
+      });
+    });
+  };
+  componentDidMount = () => {
+    this.getMyStatus();
+  };
   render() {
     return (
       <div className="container-fluid">
-        <div
-          className="card text-white bg-success"
-          style={{ maxWidth: "18rem", float: "left", margin: 10 }}
-        >
-          <div className="card-header">Count of Photos</div>
-          <div className="card-body">
-            <h1 className="card-title">45</h1>
-            <p className="card-text">Count of Photos</p>
-          </div>
-        </div>
-        <div
-          className="card text-white bg-danger"
-          style={{ maxWidth: "18rem", float: "left", margin: 10 }}
-        >
-          <div className="card-header">Header</div>
-          <div className="card-body">
-            <h1 className="card-title">96 / 100Mb</h1>
-            <p className="card-text">
-              You Can only store upto 100Mb, 4 Mb is left out
-            </p>
-          </div>
-        </div>
+        <Banner state={this.state} />
+        <hr />
+        <UserStatistics />
+
         {/* <div style={{ clear: "both" }}>
           <h1 className="mt-4">Simple Sidebar</h1>
           <p>
