@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import Chart from "react-google-charts";
+import BarChartComponent from "./barChart";
+import { PieChart } from "react-minimal-pie-chart";
+
 class UserActivityModal extends Component {
   state = {};
   Refs = {
@@ -15,27 +18,42 @@ class UserActivityModal extends Component {
           <h1>User Activity of {this.props.userDetails.userid}</h1>
           <div className="row">
             <div className="col-lg-6  col-12">
-              <Chart
-                width={"450px"}
-                height={"300px"}
-                chartType="PieChart"
-                loader={<div>Loading Chart</div>}
-                data={[
-                  ["Task", "Disk Usage"],
+              <hr />
+              <h4>Disk Usage</h4>
 
-                  [
-                    "Free",
-                    this.props.userDetails["Allowed Space"] -
+              <PieChart
+                data={[
+                  {
+                    value: this.props.userDetails["Used Space"],
+                    color: "#E38627",
+                  },
+                  {
+                    value:
+                      this.props.userDetails["Allowed Space"] -
                       this.props.userDetails["Used Space"],
-                  ],
-                  ["Used", this.props.userDetails["Used Space"]],
+                    color: "#ECECEC",
+                  },
                 ]}
-                options={{
-                  title: "Disk Usage",
+                totalValue={this.props.userDetails["Allowed Space"]}
+                lineWidth={20}
+                label={
+                  ({ dataEntry }) => dataEntry.value + "Mb"
+                  // `MB / ${(
+                  //   dataEntry.value / this.props.userDetails["Allowed Space"]
+                  // ).toFixed(2)}%`
+                }
+                labelStyle={{
+                  fontSize: "10px",
+                  fontFamily: "sans-serif",
+                  fill: "#E38627",
                 }}
+                labelPosition={70}
+                radius={40}
+                style={{ height: 260 }}
               />
             </div>
             <div className="col-lg-6  col-12">
+              <hr />
               <div class="form-group m-5">
                 <label>Allowed Space for {this.props.userDetails.userid}</label>
                 <hr />
@@ -82,92 +100,88 @@ class UserActivityModal extends Component {
           <hr />
           <div className="row">
             <div className=" col-lg-6 col-12">
-              <Chart
-                width={"450px"}
-                height={"300px"}
-                chartType="Histogram"
-                loader={<div>Loading Chart</div>}
-                data={[
-                  ["Dinosaur", "Length"],
-                  ["Acrocanthosaurus (top-spined lizard)", 12.2],
-                  ["Albertosaurus (Alberta lizard)", 9.1],
-                  ["Allosaurus (other lizard)", 12.2],
-                  ["Apatosaurus (deceptive lizard)", 22.9],
-                  ["Archaeopteryx (ancient wing)", 0.9],
-                  ["Argentinosaurus (Argentina lizard)", 36.6],
-                  ["Baryonyx (heavy claws)", 9.1],
-                  ["Brachiosaurus (arm lizard)", 30.5],
-                  ["Ceratosaurus (horned lizard)", 6.1],
-                  ["Coelophysis (hollow form)", 2.7],
-                  ["Compsognathus (elegant jaw)", 0.9],
-                  ["Deinonychus (terrible claw)", 2.7],
-                  ["Diplodocus (double beam)", 27.1],
-                  ["Dromicelomimus (emu mimic)", 3.4],
-                  ["Gallimimus (fowl mimic)", 5.5],
-                  ["Mamenchisaurus (Mamenchi lizard)", 21.0],
-                  ["Megalosaurus (big lizard)", 7.9],
-                  ["Microvenator (small hunter)", 1.2],
-                  ["Ornithomimus (bird mimic)", 4.6],
-                  ["Oviraptor (egg robber)", 1.5],
-                  ["Plateosaurus (flat lizard)", 7.9],
-                  ["Sauronithoides (narrow-clawed lizard)", 2.0],
-                  ["Seismosaurus (tremor lizard)", 45.7],
-                  ["Spinosaurus (spiny lizard)", 12.2],
-                  ["Supersaurus (super lizard)", 30.5],
-                  ["Tyrannosaurus (tyrant lizard)", 15.2],
-                  ["Ultrasaurus (ultra lizard)", 30.5],
-                  ["Velociraptor (swift robber)", 1.8],
-                ]}
-                options={{
-                  title: `Login Rate`,
-                  legend: { position: "none" },
-                }}
-                rootProps={{ "data-testid": "1" }}
-              />
+              valid value to be accessible. Provide a valid, navigable address
+              as the href value. If you cannot provide a valid href, but still
+              need the element to resemble a link, use a button and change it
+              with appropriate styles. Learn more:
+              https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
+              jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
+              required for an anchor to be keyboard accessible. Provide a valid,
+              navigable address as the href value. If you cannot provide an
+              href, but still need the element to resemble a link, use a button
+              and c valid value to be accessible. Provide a valid, navigable
+              address as the href value. If you cannot provide a valid href, but
+              still need the element to resemble a link, use a button and change
+              it with appropriate styles. Learn more:
+              https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
+              jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
+              required for an anchor to be keyboard accessible. Provide a valid,
+              navigable address as the href value. If you cannot provide an
+              href, but still need the element to resemble a link, use a button
+              and c valid value to be accessible. Provide a valid, navigable
+              address as the href value. If you cannot provide a valid href, but
+              still need the element to resemble a link, use a button and change
+              it with appropriate styles. Learn more:
+              https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
+              jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
+              required for an anchor to be keyboard accessible. Provide a valid,
+              navigable address as the href value. If you cannot provide an
+              href, but still need the element to resemble a link, use a button
+              and c valid value to be accessible. Provide a valid, navigable
+              address as the href value. If you cannot provide a valid href, but
+              still need the element to resemble a link, use a button and change
+              it with appropriate styles. Learn more:
+              https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
+              jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
+              required for an anchor to be keyboard accessible. Provide a valid,
+              navigable address as the href value. If you cannot provide an
+              href, but still need the element to resemble a link, use a button
+              and c
             </div>
             <div className=" col-lg-6 col-12">
-              <Chart
-                width={"450px"}
-                height={"300px"}
-                chartType="Histogram"
-                loader={<div>Loading Chart</div>}
-                data={[
-                  ["Dinosaur", "Length"],
-                  ["Acrocanthosaurus (top-spined lizard)", 12.2],
-                  ["Albertosaurus (Alberta lizard)", 9.1],
-                  ["Allosaurus (other lizard)", 12.2],
-                  ["Apatosaurus (deceptive lizard)", 22.9],
-                  ["Archaeopteryx (ancient wing)", 0.9],
-                  ["Argentinosaurus (Argentina lizard)", 36.6],
-                  ["Baryonyx (heavy claws)", 9.1],
-                  ["Brachiosaurus (arm lizard)", 30.5],
-                  ["Ceratosaurus (horned lizard)", 6.1],
-                  ["Coelophysis (hollow form)", 2.7],
-                  ["Compsognathus (elegant jaw)", 0.9],
-                  ["Deinonychus (terrible claw)", 2.7],
-                  ["Diplodocus (double beam)", 27.1],
-                  ["Dromicelomimus (emu mimic)", 3.4],
-                  ["Gallimimus (fowl mimic)", 5.5],
-                  ["Mamenchisaurus (Mamenchi lizard)", 21.0],
-                  ["Megalosaurus (big lizard)", 7.9],
-                  ["Microvenator (small hunter)", 1.2],
-                  ["Ornithomimus (bird mimic)", 4.6],
-                  ["Oviraptor (egg robber)", 1.5],
-                  ["Plateosaurus (flat lizard)", 7.9],
-                  ["Sauronithoides (narrow-clawed lizard)", 2.0],
-                  ["Seismosaurus (tremor lizard)", 45.7],
-                  ["Spinosaurus (spiny lizard)", 12.2],
-                  ["Supersaurus (super lizard)", 30.5],
-                  ["Tyrannosaurus (tyrant lizard)", 15.2],
-                  ["Ultrasaurus (ultra lizard)", 30.5],
-                  ["Velociraptor (swift robber)", 1.8],
-                ]}
-                options={{
-                  title: `Photo Upload Rate`,
-                  legend: { position: "none" },
-                }}
-                rootProps={{ "data-testid": "1" }}
-              />
+              <p>
+                {" "}
+                valid value to be accessible. Provide a valid, navigable address
+                as the href value. If you cannot provide a valid href, but still
+                need the element to resemble a link, use a button and change it
+                with appropriate styles. Learn more:
+                https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
+                jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
+                required for an anchor to be keyboard accessible. Provide a
+                valid, navigable address as the href value. If you cannot
+                provide an href, but still need the element to resemble a link,
+                use a button and c valid value to be accessible. Provide a
+                valid, navigable address as the href value. If you cannot
+                provide a valid href, but still need the element to resemble a
+                link, use a button and change it with appropriate styles. Learn
+                more:
+                https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
+                jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
+                required for an anchor to be keyboard accessible. Provide a
+                valid, navigable address as the href value. If you cannot
+                provide an href, but still need the element to resemble a link,
+                use a button and c valid value to be accessible. Provide a
+                valid, navigable address as the href value. If you cannot
+                provide a valid href, but still need the element to resemble a
+                link, use a button and change it with appropriate styles. Learn
+                more:
+                https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
+                jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
+                required for an anchor to be keyboard accessible. Provide a
+                valid, navigable address as the href value. If you cannot
+                provide an href, but still need the element to resemble a link,
+                use a button and c valid value to be accessible. Provide a
+                valid, navigable address as the href value. If you cannot
+                provide a valid href, but still need the element to resemble a
+                link, use a button and change it with appropriate styles. Learn
+                more:
+                https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
+                jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
+                required for an anchor to be keyboard accessible. Provide a
+                valid, navigable address as the href value. If you cannot
+                provide an href, but still need the element to resemble a link,
+                use a button and c
+              </p>
             </div>
           </div>
         </div>

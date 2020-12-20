@@ -40,7 +40,6 @@ class AdminApp extends Component {
   };
   getCounts = () => {
     axios.get("/getCounts").then((res) => {
-      console.log(res);
       this.setState({
         ...this.state,
         count_of_photos: res.data.count_of_photos,
