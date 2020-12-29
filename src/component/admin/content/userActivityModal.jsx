@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Chart from "react-google-charts";
 import BarChartComponent from "./barChart";
+import UserLogTables from "./userLogTables";
 import { PieChart } from "react-minimal-pie-chart";
 
 class UserActivityModal extends Component {
@@ -100,88 +101,7 @@ class UserActivityModal extends Component {
           <hr />
           <div className="row">
             <div className=" col-lg-6 col-12">
-              valid value to be accessible. Provide a valid, navigable address
-              as the href value. If you cannot provide a valid href, but still
-              need the element to resemble a link, use a button and change it
-              with appropriate styles. Learn more:
-              https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
-              jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
-              required for an anchor to be keyboard accessible. Provide a valid,
-              navigable address as the href value. If you cannot provide an
-              href, but still need the element to resemble a link, use a button
-              and c valid value to be accessible. Provide a valid, navigable
-              address as the href value. If you cannot provide a valid href, but
-              still need the element to resemble a link, use a button and change
-              it with appropriate styles. Learn more:
-              https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
-              jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
-              required for an anchor to be keyboard accessible. Provide a valid,
-              navigable address as the href value. If you cannot provide an
-              href, but still need the element to resemble a link, use a button
-              and c valid value to be accessible. Provide a valid, navigable
-              address as the href value. If you cannot provide a valid href, but
-              still need the element to resemble a link, use a button and change
-              it with appropriate styles. Learn more:
-              https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
-              jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
-              required for an anchor to be keyboard accessible. Provide a valid,
-              navigable address as the href value. If you cannot provide an
-              href, but still need the element to resemble a link, use a button
-              and c valid value to be accessible. Provide a valid, navigable
-              address as the href value. If you cannot provide a valid href, but
-              still need the element to resemble a link, use a button and change
-              it with appropriate styles. Learn more:
-              https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
-              jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
-              required for an anchor to be keyboard accessible. Provide a valid,
-              navigable address as the href value. If you cannot provide an
-              href, but still need the element to resemble a link, use a button
-              and c
-            </div>
-            <div className=" col-lg-6 col-12">
-              <p>
-                {" "}
-                valid value to be accessible. Provide a valid, navigable address
-                as the href value. If you cannot provide a valid href, but still
-                need the element to resemble a link, use a button and change it
-                with appropriate styles. Learn more:
-                https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
-                jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
-                required for an anchor to be keyboard accessible. Provide a
-                valid, navigable address as the href value. If you cannot
-                provide an href, but still need the element to resemble a link,
-                use a button and c valid value to be accessible. Provide a
-                valid, navigable address as the href value. If you cannot
-                provide a valid href, but still need the element to resemble a
-                link, use a button and change it with appropriate styles. Learn
-                more:
-                https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
-                jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
-                required for an anchor to be keyboard accessible. Provide a
-                valid, navigable address as the href value. If you cannot
-                provide an href, but still need the element to resemble a link,
-                use a button and c valid value to be accessible. Provide a
-                valid, navigable address as the href value. If you cannot
-                provide a valid href, but still need the element to resemble a
-                link, use a button and change it with appropriate styles. Learn
-                more:
-                https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
-                jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
-                required for an anchor to be keyboard accessible. Provide a
-                valid, navigable address as the href value. If you cannot
-                provide an href, but still need the element to resemble a link,
-                use a button and c valid value to be accessible. Provide a
-                valid, navigable address as the href value. If you cannot
-                provide a valid href, but still need the element to resemble a
-                link, use a button and change it with appropriate styles. Learn
-                more:
-                https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md
-                jsx-a11y/anchor-is-valid Line 32:15: The href attribute is
-                required for an anchor to be keyboard accessible. Provide a
-                valid, navigable address as the href value. If you cannot
-                provide an href, but still need the element to resemble a link,
-                use a button and c
-              </p>
+              <UserLogTables />
             </div>
           </div>
         </div>

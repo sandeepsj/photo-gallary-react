@@ -10,9 +10,32 @@ class Gallary extends Component {
     folders: [],
     curPath: "",
     selectedImg: undefined,
+    myDiskUsage: 0,
+    allowedSpace: 0,
   };
   Refs = {
     newName: React.createRef(),
+    newFolderName: React.createRef(),
+  };
+
+  getMyStatus = () => {
+    axios.get("/getMyStatus").then((res) => {
+      console.log("Status", res);
+      this.setState({
+        ...this.state,
+        myDiskUsage: parseInt(res.data.used / (1024 * 1024)),
+        allowedSpace: res.data.allowed,
+      });
+    });
+  };
+  newFolder = (name) => {
+    if (name == undefined) name = "noname1";
+    axios
+      .post("/newFolder", { name: name, path: this.state.curPath })
+      .then((res) => {
+        this.getImages();
+      })
+      .catch((err) => console.log("ERR:", err));
   };
   rename = (newName) => {
     console.log(newName);
@@ -81,6 +104,7 @@ class Gallary extends Component {
         console.log("err");
         console.log(err);
       });
+    this.getMyStatus();
   };
 
   handleUpload = (file) => {
@@ -150,15 +174,23 @@ class Gallary extends Component {
             onClick={() => {
               this.fileSelector.click();
             }}
+            disabled={this.state.allowedSpace < this.state.myDiskUsage}
           >
-            Upload here
+            <div hidden={this.state.allowedSpace > this.state.myDiskUsage}>
+              Memory used up!!
+            </div>
+            <div hidden={this.state.allowedSpace < this.state.myDiskUsage}>
+              Upload here
+            </div>
           </button>
           <button
             type="button"
             class="btn btn-info"
             style={{ float: "right", marginRight: 10 }}
+            data-toggle="modal"
+            data-target=".newFolderModel"
             onClick={() => {
-              this.fileSelector.click();
+              this.newFolder();
             }}
           >
             Create New Folder
@@ -168,6 +200,43 @@ class Gallary extends Component {
             Gallery
           </h1>
         </p>
+        <div
+          class="modal face newFolderModel"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="mySmallModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-sm ">
+            <div class="modal-content " style={{ padding: 10 }}>
+              <form class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="enter new folder name"
+                    required
+                    autoFocus
+                    ref={this.Refs.newFolderName}
+                  />
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <button
+                    type="button"
+                    class="btn btn-secondary btn-sm"
+                    data-toggle="modal"
+                    data-target=".newFolderModel"
+                    onClick={() =>
+                      this.newFolder(this.Refs.newFolderName.current.value)
+                    }
+                  >
+                    submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
 
         <hr class="mt-2 mb-5" />
 
