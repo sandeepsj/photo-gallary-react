@@ -97,7 +97,7 @@ class userLogTables extends Component {
   render() {
     return (
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-        <Row>
+        {/* <Row>
           <Col sm={3} class="bg-dark">
             <Nav variant="pills" className="flex-column">
               {Object.keys(this.data).map((key) => (
@@ -117,7 +117,7 @@ class userLogTables extends Component {
               ))}
             </Tab.Content>
           </Col>
-        </Row>
+        </Row> */}
       </Tab.Container>
     );
   }
